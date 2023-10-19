@@ -1,13 +1,14 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 
-app.use(express);
+app.use(express.json());
 app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 const data = {
@@ -243,14 +244,23 @@ const data = {
         "place":"Indore, Madhya Pradesh",
         "role":"Batsman",
         "match-played":509,
-        "runs":24208,
+        "runs":24208, 
     },
   ],
 };
 
-app.get("/cricket/api/players", (req, res) => {
+app.get('/', (req, res) => {
     res.json(data);
+    // res.send("ok")
 });
 
 
-app.listen(8007,()=>console.log("app listening"));
+app.listen(8010,(err)=>{
+    if(err)
+    {
+        console.log("err");
+    }
+    else{
+        console.log("app runing");
+    }
+});

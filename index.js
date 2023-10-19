@@ -249,7 +249,7 @@ const data = {
   ],
 };
 
-app.get('/', (req, res) => {
+app.get('/cricket/api', (req, res) => {
     res.json(data);
     // res.send("ok")
 });
